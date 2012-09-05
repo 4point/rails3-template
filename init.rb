@@ -32,6 +32,7 @@ File.open(file_name, 'w') {|file| file.puts ret}
 file_name = 'app/views/layouts/application.html.erb'
 tmp = File.read(file_name)
 ret = tmp.gsub(/<body>/, "<body>\n<p class='notice'><%= notice %></p>\n<p class='alert'><%= alert %></p>")
+ret = ret.gsub(/<div class="navbar navbar-fixed-top">/, '<div class="navbar navbar-inverse navbar-fixed-top">')
 File.open(file_name, 'w') {|file| file.puts ret}
 
 # git init
