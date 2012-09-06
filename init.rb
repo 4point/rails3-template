@@ -39,6 +39,12 @@ append_file 'app/assets/stylesheets/application.css', <<-CODE
 p.alert { display: none }
 CODE
 
+# git ignore
+append_file '.gitignore', <<-CODE
+*~
+*.swp
+CODE
+
 # git init
 git :init
 git :add => '.'
