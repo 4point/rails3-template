@@ -66,6 +66,8 @@ File.open(file_name, 'w') {|file| file.puts ret}
 append_file 'app/views/welcome/index.html.erb', <<-CODE
 <% if not admin_signed_in? %>
   <%= link_to "Sign in", new_session_path('admin') %>
+<% else %>
+  <%= link_to "Sign out", destroy_admin_session_path, :method => :delete %>
 <% end %>
 CODE
 
