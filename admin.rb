@@ -71,6 +71,12 @@ append_file 'app/views/welcome/index.html.erb', <<-CODE
 <% end %>
 CODE
 
+# scaffold without scaffold.css
+file_name = 'config/application.rb'
+tmp = File.read(file_name)
+ret = tmp.gsub(/config.assets.version = '1.0'/, "config.assets.version = '1.0'\n    config.generators do |g|\n        g.stylesheets false\n    end")
+File.open(file_name, 'w') {|file| file.puts ret}
+
 # apply css
 append_file 'app/assets/stylesheets/application.css', <<-CODE
 p.alert { display: none; }

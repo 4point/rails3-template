@@ -16,3 +16,5 @@ backend template:
 
 1. admin with devise and cancan
 2. admin add CRUD log
+3. admin change email and password
+4. admin change CRUD theme
