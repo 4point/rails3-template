@@ -1,5 +1,17 @@
 # Rails3 Template
 
-### pct's rails3 template, modified from ihower's and other resources.
+pct's rails3 template, modified from ihower's and other resources.
 
-### Usage: rails new YourAppName -m https://raw.github.com/pct/rails3-template/master/init.rb
+## Usage:
+
+frontend template:
+
+    $ rails new YourAppName -m https://raw.github.com/pct/rails3-template/master/init.rb
+
+backend template:
+
+    $ rails new YourAppName -m https://raw.github.com/pct/rails3-template/master/admin.rb
+
+## TODO:
+
+1. admin with devise and cancan

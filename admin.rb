@@ -9,14 +9,19 @@ run "cp config/database.yml config/database.yml.example"
 
 # add to Gemfile
 append_file 'Gemfile', <<-CODE
+gem "devise"
 gem "kaminari"
 gem "twitter-bootstrap-rails", :group => :assets
 CODE
 
 # bundle install
 run 'bundle install'
+run 'rails g devise:install'
+run 'rails g devise User'
+run 'rails g devise:views'
 run 'rails g bootstrap:install'
 run 'rails g bootstrap:layout application fixed -f'
+run 'rake db:migrate'
 
 # default controller
 run 'rails g controller welcome index'
