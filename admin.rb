@@ -17,19 +17,43 @@ CODE
 # bundle install
 run 'bundle install'
 run 'rails g devise:install'
-run 'rails g devise User'
+run 'rails g devise Admin'
 run 'rails g devise:views'
 run 'rails g bootstrap:install'
 run 'rails g bootstrap:layout application fixed -f'
 run 'rake db:migrate'
 
+# add default admin account
+append_file 'db/seeds.rb', <<-CODE
+admins = Admin.create([{email: 'admin@example.com', password: 'admin@example.com', password_confirmation: 'admin@example.com'}])
+CODE
+
+run 'rake db:seed'
+
 # default controller
 run 'rails g controller welcome index'
+
+# add auth to default app controller
+file_name = 'app/controllers/application_controller.rb'
+tmp = File.read(file_name)
+ret = tmp.gsub(/protect_from_forgery/, "  before_filter :authenticate_admin!\n  protect_from_forgery")
+File.open(file_name, 'w') {|file| file.puts ret}
 
 # 改 route.rb 啟用 welcome/index
 file_name = 'config/routes.rb'
 tmp = File.read(file_name)
 ret = tmp.gsub(/# root :to => 'welcome#index'/, "root :to => 'welcome#index'")
+File.open(file_name, 'w') {|file| file.puts ret}
+
+# cancel devise admin registration
+file_name = 'app/models/admin.rb'
+tmp = File.read(file_name)
+ret = tmp.gsub(/devise :database_authenticatable, :registerable,/, "devise :database_authenticatable, #:registerable,")
+File.open(file_name, 'w') {|file| file.puts ret}
+
+file_name = 'config/routes.rb'
+tmp = File.read(file_name)
+ret = tmp.gsub(/devise_for :admins/, "devise_for :admins, :skip => [:registration]")
 File.open(file_name, 'w') {|file| file.puts ret}
 
 # 改 layout
@@ -39,9 +63,17 @@ ret = tmp.gsub(/<body>/, "<body>\n<p class='notice'><%= notice %></p>\n<p class=
 ret = ret.gsub(/<div class="navbar navbar-fixed-top">/, '<div class="navbar navbar-inverse navbar-fixed-top">')
 File.open(file_name, 'w') {|file| file.puts ret}
 
+append_file 'app/views/welcome/index.html.erb', <<-CODE
+<% if not admin_signed_in? %>
+  <%= link_to "Sign in", new_session_path('admin') %>
+<% end %>
+CODE
+
 # apply css
 append_file 'app/assets/stylesheets/application.css', <<-CODE
-p.alert { display: none }
+p.alert { display: none; }
+.span3 .sidebar-nav { display: none; }
+input, textarea { width: auto; }
 CODE
 
 # git ignore
