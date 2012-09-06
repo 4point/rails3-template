@@ -15,3 +15,4 @@ backend template:
 ## TODO:
 
 1. admin with devise and cancan
+2. admin add CRUD log
