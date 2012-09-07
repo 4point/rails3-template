@@ -59,7 +59,7 @@ File.open(file_name, 'w') {|file| file.puts ret}
 # 改 layout
 file_name = 'app/views/layouts/application.html.erb'
 tmp = File.read(file_name)
-ret = tmp.gsub(/<body>/, "<body>\n<p class='notice'><%= notice %></p>\n<p class='alert'><%= alert %></p>")
+ret = tmp.gsub(/<body>/, "<body>\n<p class='alert alert-info'><%= notice %></p>\n<p class='alert alert-warning'><%= alert %></p>")
 ret = ret.gsub(/<div class="navbar navbar-fixed-top">/, '<div class="navbar navbar-inverse navbar-fixed-top">')
 ret = ret.gsub(/<a class="brand" href="#">/, '<a class="brand" href="/"')
 ret = ret.gsub(/<footer>/, "<hr />\n<footer>")
@@ -73,6 +73,43 @@ append_file 'app/views/welcome/index.html.erb', <<-CODE
 <% end %>
 CODE
 
+# devise layout
+file_name = 'app/views/devise/sessions/new.html.erb'
+tmp = File.read(file_name)
+ret = tmp.gsub(/f.submit "Sign in"/, 'f.submit "Sign in", :class => "btn"')
+File.open(file_name, 'w') {|file| file.puts ret}
+
+file_name = 'app/views/devise/passwords/new.html.erb'
+tmp = File.read(file_name)
+ret = tmp.gsub(/f.submit "Send me reset password instructions"/, 'f.submit "Send me reset password instructions", :class => "btn"')
+File.open(file_name, 'w') {|file| file.puts ret}
+
+file_name = 'app/views/devise/passwords/edit.html.erb'
+tmp = File.read(file_name)
+ret = tmp.gsub(/f.submit "Change my password"/, 'f.submit "Change my password", :class => "btn"')
+File.open(file_name, 'w') {|file| file.puts ret}
+
+file_name = 'app/views/devise/confirmations/new.html.erb'
+tmp = File.read(file_name)
+ret = tmp.gsub(/f.submit "Resend confirmation instructions"/, 'f.submit "Resend confirmation instructions", :class => "btn"')
+File.open(file_name, 'w') {|file| file.puts ret}
+
+file_name = 'app/views/devise/registrations/edit.html.erb'
+tmp = File.read(file_name)
+ret = tmp.gsub(/f.submit "Update"/, 'f.submit "Update", :class => "btn"')
+File.open(file_name, 'w') {|file| file.puts ret}
+
+file_name = 'app/views/devise/registrations/new.html.erb'
+tmp = File.read(file_name)
+ret = tmp.gsub(/f.submit "Sign up"/, 'f.submit "Sign up", :class => "btn"')
+File.open(file_name, 'w') {|file| file.puts ret}
+
+file_name = 'app/views/devise/unlock/new.html.erb'
+tmp = File.read(file_name)
+ret = tmp.gsub(/f.submit "Resend unlock instructions"/, 'f.submit "Resend unlock instructions", :class => "btn"')
+File.open(file_name, 'w') {|file| file.puts ret}
+
+
 # scaffold without scaffold.css
 file_name = 'config/application.rb'
 tmp = File.read(file_name)
@@ -81,7 +118,6 @@ File.open(file_name, 'w') {|file| file.puts ret}
 
 # apply css
 append_file 'app/assets/stylesheets/application.css', <<-CODE
-p.alert { display: none; }
 .span3 .sidebar-nav { display: none; }
 input, textarea { width: auto; }
 CODE
