@@ -59,9 +59,8 @@ File.open(file_name, 'w') {|file| file.puts ret}
 # 改 layout
 file_name = 'app/views/layouts/application.html.erb'
 tmp = File.read(file_name)
-ret = tmp.gsub(/<body>/, "<body>\n<p class='alert alert-info'><%= notice %></p>\n<p class='alert alert-warning'><%= alert %></p>")
+ret = tmp.gsub(/<div class="content">/, "<div class='content'>\n<% if flash[:notice] %><div class='alert alert-info'><%= notice %></div><% end %>\n<% if flash[:alert] %><div class='alert alert-warning'><%= alert %></div><% end %>")
 ret = ret.gsub(/<div class="navbar navbar-fixed-top">/, '<div class="navbar navbar-inverse navbar-fixed-top">')
-ret = ret.gsub(/<a class="brand" href="#">/, '<a class="brand" href="/"')
 ret = ret.gsub(/<footer>/, "<hr />\n<footer>")
 File.open(file_name, 'w') {|file| file.puts ret}
 
@@ -104,7 +103,7 @@ tmp = File.read(file_name)
 ret = tmp.gsub(/f.submit "Sign up"/, 'f.submit "Sign up", :class => "btn"')
 File.open(file_name, 'w') {|file| file.puts ret}
 
-file_name = 'app/views/devise/unlock/new.html.erb'
+file_name = 'app/views/devise/unlocks/new.html.erb'
 tmp = File.read(file_name)
 ret = tmp.gsub(/f.submit "Resend unlock instructions"/, 'f.submit "Resend unlock instructions", :class => "btn"')
 File.open(file_name, 'w') {|file| file.puts ret}
