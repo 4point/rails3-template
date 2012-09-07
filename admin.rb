@@ -107,7 +107,6 @@ tmp = File.read(file_name)
 ret = tmp.gsub(/f.submit "Resend unlock instructions"/, 'f.submit "Resend unlock instructions", :class => "btn"')
 File.open(file_name, 'w') {|file| file.puts ret}
 
-
 # scaffold without scaffold.css
 file_name = 'config/application.rb'
 tmp = File.read(file_name)
@@ -119,6 +118,14 @@ append_file 'app/assets/stylesheets/application.css', <<-CODE
 .span3 .sidebar-nav { display: none; }
 input, textarea { width: auto; }
 CODE
+
+# fetch scaffold template
+run 'mkdir -p lib/templates/erb/scaffold'
+run 'cd lib/templates/erb/scaffold; wget -N https://raw.github.com/pct/rails3-template/master/lib/templates/erb/scaffold/_form.html.erb'
+run 'cd lib/templates/erb/scaffold; wget -N https://raw.github.com/pct/rails3-template/master/lib/templates/erb/scaffold/edit.html.erb'
+run 'cd lib/templates/erb/scaffold; wget -N https://raw.github.com/pct/rails3-template/master/lib/templates/erb/scaffold/new.html.erb'
+run 'cd lib/templates/erb/scaffold; wget -N https://raw.github.com/pct/rails3-template/master/lib/templates/erb/scaffold/index.html.erb'
+run 'cd lib/templates/erb/scaffold; wget -N https://raw.github.com/pct/rails3-template/master/lib/templates/erb/scaffold/show.html.erb'
 
 # git ignore
 append_file '.gitignore', <<-CODE
