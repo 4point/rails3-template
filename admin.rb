@@ -34,10 +34,10 @@ run 'rake db:seed'
 run 'rails g controller welcome index'
 
 # add auth to default app controller
-run 'cd app/controllers/; wget https://raw.github.com/pct/rails3-template/master/replace/application_controller.rb'
+run 'cd app/controllers/; wget -N https://raw.github.com/pct/rails3-template/master/replace/application_controller.rb'
 
 # use different layout for devise
-run 'cd app/views/layouts/; wget https://raw.github.com/pct/rails3-template/master/replace/devise_layout.html.erb'
+run 'cd app/views/layouts/; wget -N https://raw.github.com/pct/rails3-template/master/replace/devise_layout.html.erb'
 
 # 改 route.rb 啟用 welcome/index
 file_name = 'config/routes.rb'
