@@ -61,6 +61,8 @@ file_name = 'app/views/layouts/application.html.erb'
 tmp = File.read(file_name)
 ret = tmp.gsub(/<body>/, "<body>\n<p class='notice'><%= notice %></p>\n<p class='alert'><%= alert %></p>")
 ret = ret.gsub(/<div class="navbar navbar-fixed-top">/, '<div class="navbar navbar-inverse navbar-fixed-top">')
+ret = ret.gsub(/<a class="brand" href="#">/, '<a class="brand" href="/"')
+ret = ret.gsub(/<footer>/, "<hr />\n<footer>")
 File.open(file_name, 'w') {|file| file.puts ret}
 
 append_file 'app/views/welcome/index.html.erb', <<-CODE
