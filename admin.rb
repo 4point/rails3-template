@@ -38,11 +38,18 @@ run 'cd app/controllers/; wget -N https://raw.github.com/pct/rails3-template/mas
 
 # use different layout for devise
 run 'cd app/views/layouts/; wget -N https://raw.github.com/pct/rails3-template/master/replace/devise_layout.html.erb'
+run 'cd app/views/layouts/; wget -N https://raw.github.com/pct/rails3-template/master/replace/application.html.erb'
 
 # 改 route.rb 啟用 welcome/index
 file_name = 'config/routes.rb'
 tmp = File.read(file_name)
 ret = tmp.gsub(/# root :to => 'welcome#index'/, "root :to => 'welcome#index'")
+File.open(file_name, 'w') {|file| file.puts ret}
+
+# devise use :get to sign out
+file_name = 'config/initializers/devise.rb'
+tmp = File.read(file_name)
+ret = tmp.gsub(/config.sign_out_via = :delete/, "config.sign_out_via = :get")
 File.open(file_name, 'w') {|file| file.puts ret}
 
 # cancel devise admin registration
@@ -56,20 +63,12 @@ tmp = File.read(file_name)
 ret = tmp.gsub(/devise_for :admins/, "devise_for :admins, :skip => [:registration]")
 File.open(file_name, 'w') {|file| file.puts ret}
 
-# 改 layout
-file_name = 'app/views/layouts/application.html.erb'
-tmp = File.read(file_name)
-ret = tmp.gsub(/<div class="content">/, "<div class='content'>\n<% if flash[:notice] %><div class='alert alert-info'><%= notice %></div><% end %>\n<% if flash[:alert] %><div class='alert alert-warning'><%= alert %></div><% end %>")
-ret = ret.gsub(/<div class="navbar navbar-fixed-top">/, '<div class="navbar navbar-inverse navbar-fixed-top">')
-ret = ret.gsub(/<footer>/, "<hr />\n<footer>")
-File.open(file_name, 'w') {|file| file.puts ret}
-
+run ':> app/views/welcome/index.html.erb'
 append_file 'app/views/welcome/index.html.erb', <<-CODE
-<% if not admin_signed_in? %>
-  <%= link_to "Sign in", new_session_path('admin') %>
-<% else %>
-  <%= link_to "Sign out", destroy_admin_session_path, :method => :delete %>
-<% end %>
+<div class="hero-unit">
+  <h1>Welcome#index</h1>
+  <p>Find me in app/views/welcome/index.html.erb</p>
+</div>
 CODE
 
 # devise layout
