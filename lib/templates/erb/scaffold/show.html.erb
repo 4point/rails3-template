@@ -2,13 +2,14 @@
   <h1><%= singular_table_name %></h1>
 </div>
 
-
-<dl class="dl-horizontal">
-<% attributes.each do |attribute| -%>
-<dt><%= attribute.human_name %>:</dt>
-<dd><%%= @<%= singular_table_name %>.<%= attribute.name %> %></dd>
-<% end -%>
-</dl>
+<table class="table table-bordered table-striped table-hover">
+  <% attributes.each do |attribute| -%>
+    <tr>
+      <th class="span2"><i class="icon-tag"></i> <%= attribute.human_name %>:</th>
+      <td><%%= @<%= singular_table_name %>.<%= attribute.name %> %></td>
+    </tr>
+  <% end -%>
+</table>
 
 <div class="form-actions">
   <%%= link_to 'Back', <%= index_helper %>_path, :class => 'btn' %>

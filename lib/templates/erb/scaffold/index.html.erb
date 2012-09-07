@@ -2,14 +2,14 @@
   <h1>Listing <%= plural_table_name %></h1>
 </div>
 
-<table class="table table-striped table-hover">
+<table class="table table-bordered table-striped table-hover">
   <thead>
     <tr>
-      <th>#</th>
+      <th><i class="icon-list"></i></th>
       <% attributes.each do |attribute| -%>
-      <th><%= attribute.human_name %></th>
+        <th><i class="icon-tag"></i> <%= attribute.human_name %></th>
       <% end -%>
-      <th>Actions</th>
+      <th><i class="icon-cog"></i> Actions</th>
     </tr>
   </thead>
   <tbody>
