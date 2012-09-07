@@ -13,7 +13,7 @@
 
 <% attributes.each do |attribute| -%>
   <div class="control-group">
-    <%%= f.label :<%= attribute.name %>, :class => 'control-label' %><br />
+    <%%= f.label :<%= attribute.name %>, :class => 'control-label' %>
     <div class="controls">
       <%%= f.<%= attribute.field_type %> :<%= attribute.name %>, :class => '<%= attribute.field_type %>' %>
     </div>

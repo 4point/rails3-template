@@ -8,9 +8,7 @@
       <% attributes.each do |attribute| -%>
       <th><%= attribute.human_name %></th>
       <% end -%>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -20,9 +18,11 @@
       <% attributes.each do |attribute| -%>
       <td><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
       <% end -%>
-      <td><%%= link_to 'Show', <%= singular_table_name %>, :class => 'btn btn-mini' %></td>
-      <td><%%= link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>), :class => 'btn btn-mini' %></td>
-      <td><%%= link_to 'Destroy', <%= singular_table_name %>, <%= key_value :method, ":delete" %>, <%= key_value :data, "{ #{key_value :confirm, "'Are you sure?'"} }" %>, :class => 'btn btn-mini btn-danger' %></td>
+      <td>
+        <%%= link_to 'Show', <%= singular_table_name %>, :class => 'btn btn-mini' %>
+        <%%= link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>), :class => 'btn btn-mini' %>
+        <%%= link_to 'Destroy', <%= singular_table_name %>, <%= key_value :method, ":delete" %>, <%= key_value :data, "{ #{key_value :confirm, "'Are you sure?'"} }" %>, :class => 'btn btn-mini btn-danger' %>
+    </td>
     </tr>
     <%% end %>
   </tbody>

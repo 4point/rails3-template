@@ -1,12 +1,17 @@
-<p id="notice"><%%= notice %></p>
+<div class="page-header">
+  <h1><%= singular_table_name %></h1>
+</div>
 
+
+<dl class="dl-horizontal">
 <% attributes.each do |attribute| -%>
-<p>
-  <b><%= attribute.human_name %>:</b>
-  <%%= @<%= singular_table_name %>.<%= attribute.name %> %>
-</p>
-
+<dt><%= attribute.human_name %>:</dt>
+<dd><%%= @<%= singular_table_name %>.<%= attribute.name %> %></dd>
 <% end -%>
+</dl>
 
-<%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>) %> |
-<%%= link_to 'Back', <%= index_helper %>_path %>
+<div class="form-actions">
+  <%%= link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), :class => 'btn' %> 
+  <%%= link_to 'Back', <%= index_helper %>_path, :class => 'btn' %>
+  <%%= link_to 'Destroy', <%= singular_table_name %>_path, <%= key_value :method, ":delete" %>, <%= key_value :data, "{ #{key_value :confirm, "'Are you sure?'"} }" %>, :class => 'btn btn-danger' %>
+</div>
