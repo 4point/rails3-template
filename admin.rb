@@ -127,6 +127,20 @@ run 'cd lib/templates/erb/scaffold; wget -N https://raw.github.com/pct/rails3-te
 run 'cd lib/templates/erb/scaffold; wget -N https://raw.github.com/pct/rails3-template/master/lib/templates/erb/scaffold/index.html.erb'
 run 'cd lib/templates/erb/scaffold; wget -N https://raw.github.com/pct/rails3-template/master/lib/templates/erb/scaffold/show.html.erb'
 
+# fetch scaffold controller with kaminari
+run 'mkdir -p lib/templates/rails/scaffold_controller'
+run 'cd lib/templates/rails/scaffold_controller; wget -N https://raw.github.com/pct/rails3-template/master/lib/templates/rails/scaffold_controller/controller.rb'
+
+# fetch kaminari views
+run 'mkdir -p app/views/kaminari'
+run 'cd app/views/kaminari; wget -N https://raw.github.com/pct/rails3-template/master/replace/kaminari/_first_page.html.erb'
+run 'cd app/views/kaminari; wget -N https://raw.github.com/pct/rails3-template/master/replace/kaminari/_gap.html.erb'
+run 'cd app/views/kaminari; wget -N https://raw.github.com/pct/rails3-template/master/replace/kaminari/_last_page.html.erb'
+run 'cd app/views/kaminari; wget -N https://raw.github.com/pct/rails3-template/master/replace/kaminari/_next_page.html.erb'
+run 'cd app/views/kaminari; wget -N https://raw.github.com/pct/rails3-template/master/replace/kaminari/_page.html.erb'
+run 'cd app/views/kaminari; wget -N https://raw.github.com/pct/rails3-template/master/replace/kaminari/_paginator.html.erb'
+run 'cd app/views/kaminari; wget -N https://raw.github.com/pct/rails3-template/master/replace/kaminari/_prev_page.html.erb'
+
 # git ignore
 append_file '.gitignore', <<-CODE
 *~

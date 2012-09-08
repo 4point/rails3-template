@@ -2,6 +2,10 @@
   <h1>Listing <%= plural_table_name %></h1>
 </div>
 
+<p>
+  <%%= link_to 'New <%= human_name %>', new_<%= singular_table_name %>_path, :class => 'btn btn-primary' %>
+</p>
+
 <table class="table table-bordered table-striped table-hover">
   <thead>
     <tr>
@@ -31,5 +35,4 @@
   </tbody>
 </table>
 
-
-<%%= link_to 'New <%= human_name %>', new_<%= singular_table_name %>_path, :class => 'btn btn-primary' %>
+<%%= paginate @<%= plural_table_name %> %>

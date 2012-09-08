@@ -4,15 +4,15 @@ pct's rails3 template, modified from ihower's and other resources.
 
 ## Usage:
 
-frontend template:
+Frontend template:
 
     $ rails new YourAppName -m https://raw.github.com/pct/rails3-template/master/init.rb
 
-backend template:
+Backend template:
 
     $ rails new YourAppName -m https://raw.github.com/pct/rails3-template/master/admin.rb
     
-    then you could just use rails scaffold to gen your CRUD files:
+then you could just use rails scaffold to gen your CRUD files:
 
     $ rails g scaffold post title:string content:text
 
@@ -37,4 +37,10 @@ backend template:
 1. admin with devise and cancan
 2. admin add CRUD log
 3. admin change email and password
-4. admin pagination
+
+## Reference
+
+1. https://github.com/gabetax/twitter-bootstrap-kaminari-views
+2. https://github.com/ihower/rails3-app-template
+3. http://twitter.github.com/bootstrap/
+4. https://github.com/plataformatec/devise
