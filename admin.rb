@@ -122,9 +122,10 @@ File.open(file_name, 'w') {|file| file.puts ret}
 
 # apply css
 append_file 'app/assets/stylesheets/application.css', <<-CODE
-.span3 .sidebar-nav { display: none; }
 input, textarea { width: auto; }
 CODE
+
+run 'cd app/assets/stylesheets; wget -N https://raw.github.com/pct/rails3-template/master/replace/bootstrap_and_overrides.css.less'
 
 # fetch scaffold template
 run 'mkdir -p lib/templates/erb/scaffold'

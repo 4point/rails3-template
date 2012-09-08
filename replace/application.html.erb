@@ -65,17 +65,16 @@
     </div>
 
     <div class="container">
+      <% if flash[:notice] %><div class='alert alert-info'><%= notice %></div><% end %>
+      <% if flash[:alert] %><div class='alert alert-warning'><%= alert %></div><% end %>
       <div class="content">
-        <% if flash[:notice] %><div class='alert alert-info'><%= notice %></div><% end %>
-        <% if flash[:alert] %><div class='alert alert-warning'><%= alert %></div><% end %>
         <div class="row">
-          <div class="span9">
+          <div class="container">
             <%= yield %>
           </div>
         </div><!--/row-->
       </div><!--/content-->
 
-      <hr />
       <footer>
         <p>&copy; Company 2012</p>
       </footer>
