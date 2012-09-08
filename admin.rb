@@ -21,6 +21,7 @@ run 'rails g devise Admin'
 run 'rails g devise:views'
 run 'rails g bootstrap:install'
 run 'rails g bootstrap:layout application fixed -f'
+run 'rails g kaminari:config'
 run 'rake db:migrate'
 
 # add default admin account
@@ -44,6 +45,12 @@ run 'cd app/views/layouts/; wget -N https://raw.github.com/pct/rails3-template/m
 file_name = 'config/routes.rb'
 tmp = File.read(file_name)
 ret = tmp.gsub(/# root :to => 'welcome#index'/, "root :to => 'welcome#index'")
+File.open(file_name, 'w') {|file| file.puts ret}
+
+# kaminari per page 10
+file_name = 'config/initializers/kaminari_config.rb'
+tmp = File.read(file_name)
+ret = tmp.gsub(/# config.default_per_page = 25/, "config.default_per_page = 10")
 File.open(file_name, 'w') {|file| file.puts ret}
 
 # devise use :get to sign out
