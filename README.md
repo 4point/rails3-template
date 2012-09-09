@@ -4,17 +4,27 @@ pct's rails3 template, modified from ihower's and other resources.
 
 ## Usage:
 
-Frontend template:
+#### Template for frontend only:
+    $ rails new YourAppName -m https://raw.github.com/pct/rails3-template/master/frontend.rb
 
-    $ rails new YourAppName -m https://raw.github.com/pct/rails3-template/master/init.rb
-
-Backend template:
-
-    $ rails new YourAppName -m https://raw.github.com/pct/rails3-template/master/admin.rb
+#### Template for backend only:
+    $ rails new YourAppName -m https://raw.github.com/pct/rails3-template/master/backend.rb
     
-then you could just use rails scaffold to gen your CRUD files:
+and the scaffold command::
 
     $ rails g scaffold post title:string content:text
+    $ rake db:migrate
+
+#### Full Template (frontend and backend in one site domain):
+
+    $ rails new YourAppName -m https://raw.github.com/pct/rails3-template/master/full.rb
+
+and the scaffold command::
+
+    $ rails g scaffold backend/post title:string content:text
+    $ rake db:migrate
+
+** The bad smell is all your MVC file must use `backend` prefix **
 
 
 ## Backend Screenshots
