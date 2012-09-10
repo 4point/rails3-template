@@ -2,9 +2,17 @@
   <h1>Listing <%= plural_table_name %></h1>
 </div>
 
-<p>
-  <%%= link_to 'New <%= human_name %>', new_<%= singular_table_name %>_path, :class => 'btn btn-primary' %>
-</p>
+<div>
+  <div class="pull-left">
+    <%%= link_to 'New <%= human_name %>', new_<%= singular_table_name %>_path, :class => 'btn btn-primary' %>
+  </div>
+  <div class="pull-right">
+    <%%= <%= 'search_form_for @search do |f|' %> %>
+      <%%= <%= 'f.text_field :"#{@search_key}"' %> %>
+      <%%= <%= 'f.submit "Search", :class => "btn"' %> %>
+    <%% <%= 'end' %> %>
+  </div>
+</div>
 
 <table class="table table-bordered table-striped table-hover">
   <thead>

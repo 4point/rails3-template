@@ -12,6 +12,7 @@ append_file 'Gemfile', <<-CODE
 gem "devise"
 gem "kaminari"
 gem "twitter-bootstrap-rails", :group => :assets
+gem "ransack"
 CODE
 
 # bundle install

@@ -3,11 +3,13 @@ require_dependency "<%= namespaced_file_path %>/application_controller"
 
 <% end -%>
 <% module_namespacing do -%>
-class <%= controller_class_name %>Controller < ApplicationController
+class <%= controller_class_name %>Controller < Backend::ApplicationController
   # GET <%= route_url %>
   # GET <%= route_url %>.json
   def index
-    @<%= plural_table_name %> = <%= class_name -%>.page(params[:page])
+    @search_key = (<%= class_name -%>.column_names - ['id', 'created_at', 'updated_at']).join('_or_') + '_cont'
+    @search = <%= class_name -%>.search(params[:q])
+    @<%= plural_table_name %> = @search.result.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
