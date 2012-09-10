@@ -3,7 +3,7 @@ require_dependency "<%= namespaced_file_path %>/application_controller"
 
 <% end -%>
 <% module_namespacing do -%>
-class <%= controller_class_name %>Controller < Backend::ApplicationController
+class <%= controller_class_name %>Controller < ApplicationController
   # GET <%= route_url %>
   # GET <%= route_url %>.json
   def index
