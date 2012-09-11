@@ -44,7 +44,7 @@ and the scaffold command::
 
 ## TODO:
 
-1. admin with devise and cancan
+1. admin add cancan
 2. admin add CRUD log
 3. admin change email and password
 
@@ -54,3 +54,4 @@ and the scaffold command::
 2. https://github.com/ihower/rails3-app-template
 3. http://twitter.github.com/bootstrap/
 4. https://github.com/plataformatec/devise
+5. https://github.com/ernie/ransack
