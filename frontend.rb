@@ -10,7 +10,9 @@ run "cp config/database.yml config/database.yml.example"
 # add to Gemfile
 append_file 'Gemfile', <<-CODE
 gem "kaminari"
-gem "twitter-bootstrap-rails", :group => :assets
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
 CODE
 
 # bundle install
@@ -31,12 +33,12 @@ File.open(file_name, 'w') {|file| file.puts ret}
 file_name = 'app/views/layouts/application.html.erb'
 tmp = File.read(file_name)
 ret = tmp.gsub(/<body>/, "<body>\n<p class='notice'><%= notice %></p>\n<p class='alert'><%= alert %></p>")
-ret = ret.gsub(/<div class="navbar navbar-fixed-top">/, '<div class="navbar navbar-inverse navbar-fixed-top">')
 File.open(file_name, 'w') {|file| file.puts ret}
 
 # apply css
 append_file 'app/assets/stylesheets/application.css', <<-CODE
 p.alert { display: none }
+body { padding-top: 60px; }
 CODE
 
 # git ignore
