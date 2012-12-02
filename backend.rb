@@ -11,7 +11,9 @@ run "cp config/database.yml config/database.yml.example"
 append_file 'Gemfile', <<-CODE
 gem "devise"
 gem "kaminari"
-gem "twitter-bootstrap-rails", :group => :assets
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
 gem "ransack"
 CODE
 
