@@ -29,17 +29,25 @@ and the scaffold command::
 
 ## Backend Screenshots
 
-#### login page:
-![login page](https://raw.github.com/pct/rails3-template/master/screenshots/login.png)
+(rails new MyBlog -m https://raw.github.com/pct/rails3-template/master/full.rb)
 
-#### welcome page:
-![welcome page](https://raw.github.com/pct/rails3-template/master/screenshots/login_success.png)
+#### frontend: /
+![frontend](https://raw.github.com/pct/rails3-template/master/screenshots/frontend.png)
 
-#### scaffold list:
-![list page](https://raw.github.com/pct/rails3-template/master/screenshots/list.png)
+#### login page: /admins/sign_in 
+![login](https://raw.github.com/pct/rails3-template/master/screenshots/login.png)
 
-#### scaffold view:
-![view page](https://raw.github.com/pct/rails3-template/master/screenshots/view.png)
+#### backend page: /backend
+![backend](https://raw.github.com/pct/rails3-template/master/screenshots/login_success.png)
+
+#### scaffold list: /backend/posts
+![list](https://raw.github.com/pct/rails3-template/master/screenshots/list.png)
+
+#### search results:
+![search result](https://raw.github.com/pct/rails3-template/master/screenshots/filter.png)
+
+#### scaffold view: /backend/posts/1
+![view](https://raw.github.com/pct/rails3-template/master/screenshots/view.png)
 
 
 ## TODO:
