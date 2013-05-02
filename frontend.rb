@@ -3,6 +3,7 @@
 
 # clean file
 run "rm README.rdoc"
+run "rm -f public/favicon.ico"
 run "rm -f public/index.html"
 run "rm -f public/images/rails.png"
 run "cp config/database.yml config/database.yml.example"
@@ -13,6 +14,10 @@ gem "kaminari"
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
+gem "google-analytics-rails"
+group :development do
+  gem 'guard-livereload', require: false
+end
 CODE
 
 # bundle install
@@ -30,15 +35,11 @@ ret = tmp.gsub(/# root :to => 'welcome#index'/, "root :to => 'welcome#index'")
 File.open(file_name, 'w') {|file| file.puts ret}
 
 # 改 layout
-file_name = 'app/views/layouts/application.html.erb'
-tmp = File.read(file_name)
-ret = tmp.gsub(/<body>/, "<body>\n<p class='notice'><%= notice %></p>\n<p class='alert'><%= alert %></p>")
-File.open(file_name, 'w') {|file| file.puts ret}
+run 'cd app/views/layouts/; wget -N https://raw.github.com/pct/rails3-template/master/replace/application.html.erb'
 
 # apply css
 append_file 'app/assets/stylesheets/application.css', <<-CODE
 p.alert { display: none }
-body { padding-top: 60px; }
 CODE
 
 # git ignore
